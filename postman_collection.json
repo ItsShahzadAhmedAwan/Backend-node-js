@@ -1,0 +1,262 @@
+{
+  "info": {
+    "name": "Book Review API",
+    "description": "API endpoints for Online Book Review Application",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "General User Endpoints",
+      "item": [
+        {
+          "name": "Task 1 - Get All Books",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/books",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books"]
+            },
+            "description": "Retrieve list of all books available in the shop"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 2 - Get Books by ISBN",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/books/isbn/978-0134685991",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "isbn", "978-0134685991"]
+            },
+            "description": "Get book details based on ISBN"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 3 - Get Books by Author",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/books/author/Martin",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "author", "Martin"]
+            },
+            "description": "Get all books by a specific author"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 4 - Get Books by Title",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/books/title/Code",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "title", "Code"]
+            },
+            "description": "Get books based on title search"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 5 - Get Book Reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/books/978-0134685991/reviews",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "978-0134685991", "reviews"]
+            },
+            "description": "Get all reviews for a specific book"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Authentication Endpoints",
+      "item": [
+        {
+          "name": "Task 6 - Register New User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser123\",\n  \"password\": \"password123\",\n  \"email\": \"test@example.com\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/auth/register",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "auth", "register"]
+            },
+            "description": "Register a new user account"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 7 - Login User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"testuser123\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/auth/login",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "auth", "login"]
+            },
+            "description": "Login with registered user credentials"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Review Management (Authenticated)",
+      "item": [
+        {
+          "name": "Task 8 - Add Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reviewText\": \"This is an excellent book on clean code principles!\",\n  \"rating\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/books/978-0134685991/reviews",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "978-0134685991", "reviews"]
+            },
+            "description": "Add a new review for a book (authenticated user only)"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 8 - Modify Review",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"reviewText\": \"Updated review: This book is truly amazing!\",\n  \"rating\": 5\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/books/978-0134685991/reviews/REVIEW_ID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "978-0134685991", "reviews", "REVIEW_ID_HERE"]
+            },
+            "description": "Modify an existing review (user can only modify their own reviews)"
+          },
+          "response": []
+        },
+        {
+          "name": "Task 9 - Delete Review",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost:8000/api/books/978-0134685991/reviews/REVIEW_ID_HERE",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["api", "books", "978-0134685991", "reviews", "REVIEW_ID_HERE"]
+            },
+            "description": "Delete a review (user can only delete their own reviews)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Logout",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer YOUR_JWT_TOKEN_HERE",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8000/api/auth/logout",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8000",
+          "path": ["api", "auth", "logout"]
+        },
+        "description": "Logout the current user"
+      },
+      "response": []
+    }
+  ]
+}

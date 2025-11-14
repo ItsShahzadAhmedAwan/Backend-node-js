@@ -1,0 +1,36 @@
+{
+  "name": "backend-node",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ItsShahzadAhmedAwan/Backend-node-js.git"
+  },
+  "keywords": [
+    "book-review",
+    "express",
+    "jwt",
+    "authentication"
+  ],
+  "author": "Your Name",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ItsShahzadAhmedAwan/Backend-node-js/issues"
+  },
+  "homepage": "https://github.com/ItsShahzadAhmedAwan/Backend-node-js#readme",
+  "description": "Online Book Review Application with Node.js and Express.js",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^2.2.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "jsonwebtoken": "^9.0.2"
+  }
+}
